@@ -20,8 +20,9 @@
                                 type="password"
                                 id="password"
                                 class="form-control"
-                                v-model="userData.Password"
+                                v-model.lazy="userData.Password"
                                 >
+                                {{ userData.Password }}
                     </div>
                     <div class="form-group">
                         <label for="age">Age</label>
@@ -41,7 +42,8 @@
                     <textarea
                             id="message"
                             rows="5"
-                            class="form-control"></textarea>
+                            class="form-control"
+                            v-model="message"></textarea>
                 </div>
             </div>
             <div class="row">
@@ -109,7 +111,7 @@
                         <p>Mail:{{ userData.email }}</p>
                         <p>Password: {{ userData.Password }}</p>
                         <p>Age: {{ userData.Age }}</p>
-                        <p>Message: </p>
+                        <p style="white-space: pre;">Message: {{  message }}</p>
                         <p><strong>Send Mail?</strong></p>
                         <ul>
                             <li></li>
@@ -133,7 +135,7 @@
                   Password:'',
                   Age:27
                 },
-                email:  ''
+                message:  'Your Complaints Here!'
             }
         }
     }
