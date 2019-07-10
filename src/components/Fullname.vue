@@ -8,12 +8,14 @@
             <label>Last Name</label>
             <input type="text" class="form-control" :value="lastName" @input="nameChanged(false, $event)">
         </div>
+        <div class="form-group">
+        </div>
     </div>
 </template>
 
 <script>
     export default {
-        props: ['value'],
+        props: ['value','submitted'],
         methods: {
             nameChanged(isFirst, event) {
                 let name = '';

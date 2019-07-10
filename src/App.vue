@@ -4,7 +4,10 @@
             <div class="row" v-if="!isSubmitted">
                 <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
                     <!-- Exercise 1 -->
-                    <h1>Sign UP</h1>
+                    <!-- Sending Custom Directive value -->
+                    <h1 v-highlight="'grey'">Sign UP</h1>  
+                    <!-- SEnding Cutom Directive Arguments -->
+                    <h1 v-highlight:background.delayed="'grey'">Sign UP</h1>  
                     <!-- Create a Signup Form where you retrieve the following Information -->
                     <!-- Full Name (First Name + Last Name) -->
                     <!-- <div class="form-group">
@@ -24,7 +27,7 @@
                             >
                     </div> -->
                     
-                    <app-Fullname v-model="fullname"></app-Fullname>
+                    <app-Fullname v-model="fullname" :submitted="isSubmitted"></app-Fullname>
                     <!-- Mail -->
                     <div class="form-group">
                         <label for="email">Mail</label>
@@ -86,6 +89,7 @@
                             <p>Mail: {{ userexData.mail }}</p>
                             <p>Password: {{ userexData.password }}</p>
                             <p><strong>Store data?</strong> {{dataStore}}</p>
+                            <button class="btn btn-sm btn-primary" @click="goBack">Back</button>
                         </div>
                     </div>
                 </div>
@@ -123,7 +127,10 @@ import Fullname from './components/Fullname';
         methods:{
           submitted: function(){
             this.isSubmitted=true;
-          }
+          },
+            goBack: function(){
+                this.isSubmitted=false;
+            }
         }
     }
 </script>
