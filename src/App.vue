@@ -7,7 +7,10 @@
                     <!-- Sending Custom Directive value -->
                     <h1 v-highlight="'grey'">Sign UP</h1>  
                     <!-- SEnding Cutom Directive Arguments -->
-                    <h1 v-highlight:background.delayed="'grey'">Sign UP</h1>  
+                    <h1 v-highlight:background.delayed.blink="'red'">Register Soon</h1>  
+                    <button v-myTurn:click="alertTest" class="btn btn-sm btn-primary">Customize</button>
+
+                    <div v-myTurn:mouseover="mouseOn" v-myTurn:mouseleft="mouseLeft" style="width:100px;height:100px;background-color:lightgreen"></div>
                     <!-- Create a Signup Form where you retrieve the following Information -->
                     <!-- Full Name (First Name + Last Name) -->
                     <!-- <div class="form-group">
@@ -120,6 +123,19 @@ import Fullname from './components/Fullname';
                 fullname:'Max Green',
             }
         },
+        directives:{
+            myTurn:{
+                bind(el,binding,vnode){
+                    // el.onclick = function(){
+                    //     binding.value();
+
+                    const type = binding.arg;
+                    const fn = binding.value;
+
+                    el.addEventListener(type,fn)
+                    }
+                }
+            },
         components:{
         //   appSwitch: Switch,
           appFullname: Fullname
@@ -130,6 +146,15 @@ import Fullname from './components/Fullname';
           },
             goBack: function(){
                 this.isSubmitted=false;
+            },
+            alertTest:  function(){
+                alert('CLicked');
+            },
+            mouseOn:  function(){
+                alert('mCLicked');
+            },
+            mouseLeft:  function(){
+                alert('left');
             }
         }
     }
