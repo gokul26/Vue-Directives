@@ -3,6 +3,11 @@ import App from './App.vue'
 
 Vue.config.productionTip = false
 
+// GLobal FIlter
+Vue.filter('toLowerCase',function(value){
+  return value.toLowerCase();
+});
+
 new Vue({
   render: h => h(App),
 }).$mount('#app')
